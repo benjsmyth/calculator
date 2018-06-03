@@ -1,0 +1,195 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	color: white;
+}
+
+#container {
+	width: 100vw;
+	height: 100vh;
+	background: #199ca8;
+	position: relative;
+}
+
+#display-bar {
+	width: 100%;
+	height: 120px;
+	background: white;
+	color: black;
+	border-bottom: 1px solid black;
+}
+
+#display-text {
+	line-height: 120px;
+	font-size: 7em;
+	float: right;
+	padding: 0 20px;
+}
+
+#all-buttons {
+	height: 558px;
+	z-index: 0;
+	display: grid;
+	grid-gap: none;
+	grid-template-columns: 25% 50% 25%;
+	grid-template-rows: 15% 42.5% 42.5%;
+	grid-template-areas: 'top top top' 'left middle right' 'left middle right';
+	border: 1px solid black;
+	border-top: none;
+	border-bottom: none;
+}
+
+button {
+	background: #1ca2af;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	font-size: 2em;
+	border: 1px solid black;
+	text-shadow: 0 0 5px rgb(0, 0, 0, 0.7);
+}
+
+#top-buttons {
+	grid-area: top;
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+#left-buttons {
+	grid-area: left;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 25.03% 24.95% 25.03% 25.03%;
+	grid-template-areas: 'left-p right-p' 'negpos negpos' 'exp exp' 'sqrt sqrt';
+}
+
+#left-parentheses {
+	grid-area: left-p;
+}
+
+#right-parentheses {
+	grid-area: right-p;
+}
+
+#negpos {
+	grid-area: negpos;
+}
+
+#exponent {
+	grid-area: exp;
+}
+
+#sqrt {
+	grid-area: sqrt;
+}
+
+#middle-buttons {
+	grid-area: middle;
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto;
+	grid-template-areas: 'seven eight nine' 'four five six' 'one two three' 'zero zero decimal';	
+}
+
+#nine {
+	grid-area: nine;
+}
+
+#eight {
+	grid-area: eight;
+}
+
+#seven {
+	grid-area: seven;
+}
+
+#six {
+	grid-area: six;
+}
+
+#five {
+	grid-area: five;
+}
+
+#four {
+	grid-area: four;
+}
+
+#three {
+	grid-area: three;
+}
+
+#two {
+	grid-area: two;
+}
+
+#one {
+	grid-area: one;
+}
+
+#zero {
+	grid-area: zero;
+}
+
+#decimal {
+	grid-area: decimal;
+}
+
+#right-buttons {
+	grid-area: right;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: 25% 25% 50%;
+	grid-template-areas: 'divide multiply' 'subtract add' 'equals equals' 'equals equals';	
+}
+
+#divide {
+	grid-area: divide;
+}
+
+#multiply {
+	grid-area: multiply;
+}
+
+#subtract {
+	grid-area: subtract;
+}
+
+#add {
+	grid-area: add;
+}
+
+#equals {
+	grid-area: equals;
+}
+
+#footer {
+	position: absolute;
+	width: 97.2vw;
+	height: 6vh;
+	bottom: 0;
+	padding: 0 16px;
+	font-size: 0.85em;
+	background: #0e818c;
+	border: 2px solid black;
+	border-top: 1px solid black;
+}
+
+#codedby {
+	float: left;
+	position: absolute;
+	left: 15px;
+	top: 14px;
+	text-shadow: 0 0 5px rgb(0, 0, 0, 0.7);
+}
+
+#visitme {
+	float: right;
+	position: absolute;
+	right: 15px;
+	top: 14px;
+	text-shadow: 0 0 5px rgb(0, 0, 0, 0.7);
+}
