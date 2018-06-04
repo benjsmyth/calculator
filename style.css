@@ -17,26 +17,26 @@ body {
 
 #display-bar {
 	width: 100%;
-	height: 120px;
+	height: 200px;
 	background: white;
 	color: black;
 	border-bottom: 1px solid black;
 }
 
 #display-text {
-	line-height: 120px;
-	font-size: 7em;
+	line-height: 200px;
+	font-size: 12em;
 	float: right;
-	padding: 0 20px;
+	padding: 0 40px;
 }
 
 #all-buttons {
-	height: 558px;
+	height: 480px;
 	z-index: 0;
 	display: grid;
 	grid-gap: none;
 	grid-template-columns: 25% 50% 25%;
-	grid-template-rows: 15% 42.5% 42.5%;
+	grid-template-rows: 15% 43% 43%;
 	grid-template-areas: 'top top top' 'left middle right' 'left middle right';
 	border: 1px solid black;
 	border-top: none;
@@ -52,6 +52,14 @@ button {
 	text-shadow: 0 0 5px rgb(0, 0, 0, 0.7);
 }
 
+button:hover {
+	cursor: pointer;
+}
+
+button:focus, button:active {
+	outline: none;
+}
+
 #top-buttons {
 	grid-area: top;
 	display: grid;
@@ -63,7 +71,7 @@ button {
 	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-template-rows: 25.03% 24.95% 25.03% 25.03%;
-	grid-template-areas: 'left-p right-p' 'negpos negpos' 'exp exp' 'sqrt sqrt';
+	grid-template-areas: 'left-p right-p' 'plus-minus plus-minus' 'exp exp' 'sqrt sqrt';
 }
 
 #left-parentheses {
@@ -74,8 +82,8 @@ button {
 	grid-area: right-p;
 }
 
-#negpos {
-	grid-area: negpos;
+#plus-minus {
+	grid-area: plus-minus;
 }
 
 #exponent {
