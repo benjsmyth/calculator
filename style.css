@@ -31,7 +31,7 @@ body {
 }
 
 #all-buttons {
-	height: 480px;
+	height: 475px;
 	z-index: 0;
 	display: grid;
 	grid-gap: none;
@@ -40,7 +40,6 @@ body {
 	grid-template-areas: 'top top top' 'left middle right' 'left middle right';
 	border: 1px solid black;
 	border-top: none;
-	border-bottom: none;
 }
 
 button {
@@ -71,7 +70,7 @@ button:focus, button:active {
 	display: grid;
 	grid-template-columns: 50% 50%;
 	grid-template-rows: 25.03% 24.95% 25.03% 25.03%;
-	grid-template-areas: 'left-p right-p' 'plus-minus plus-minus' 'exp exp' 'sqrt sqrt';
+	grid-template-areas: 'left-p right-p' 'exp exp' 'plus-minus plus-minus' 'modulo modulo';
 }
 
 #left-parentheses {
@@ -82,16 +81,16 @@ button:focus, button:active {
 	grid-area: right-p;
 }
 
-#plus-minus {
-	grid-area: plus-minus;
-}
-
 #exponent {
 	grid-area: exp;
 }
 
-#sqrt {
-	grid-area: sqrt;
+#plus-minus {
+	grid-area: plus-minus;
+}
+
+#modulo {
+	grid-area: modulo;
 }
 
 #middle-buttons {

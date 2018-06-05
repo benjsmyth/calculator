@@ -4,11 +4,11 @@ const displayText = document.getElementById('display-text');
 const allClearButton = document.getElementById('all-clear'); 
 const deleteButton = document.getElementById('delete'); 
 
-const leftParenthesesButton = document.getElementById('left-parentheses'); 
-const rightParenthesesButton = document.getElementById('right-parentheses'); 
+const leftParenthesesButton = document.getElementById('left-parentheses');
+const rightParenthesesButton = document.getElementById('right-parentheses');
+const exponentButton = document.getElementById('exponent');
 const plusMinusButton = document.getElementById('plus-minus'); 
-const exponentButton = document.getElementById('exponent'); 
-const sqrtButton = document.getElementById('sqrt'); 
+const moduloButton = document.getElementById('modulo');   
 
 const nineButton = document.getElementById('nine'); 
 const eightButton = document.getElementById('eight');
@@ -28,238 +28,185 @@ const subtractButton = document.getElementById('subtract');
 const addButton = document.getElementById('add'); 
 const equalsButton = document.getElementById('equals'); 
 
-// Empty object. This will be used to push data to so it can be held before it is operated on.
-var operation = {};
+window.onload = () => {displayText.textContent = '0'};
 
-// Empty arrays. These will be used to collect numbers together before and after an operation is selected.
-var firstOperandArray = [];
-var secondOperandArray = [];
+// Expression array. This will be used to push data to so it can be held before it is operated on.
+var expression = [];
 
-// Math functions.
-function add() {
-	return this.firstOperand + this.secondOperand;
-}
+// This array will be refered to to check if the current expression ends in any of these operators.
+var operators = ['+', '-', '*', '/', '**', '%'];
 
-function subtract() {
-	return this.firstOperand - this.secondOperand;
-}
-
-function multiply() {
-	return this.firstOperand * this.secondOperand;
-}
-
-function divide() {
-	return this.firstOperand / this.secondOperand;
-}
-
-function plusMinus() {
-	return this.firstOperand * -1;
-}
-
-function exponent() {
-	return Math.pow(this.firstOperand, this.secondOperand);
-}
-
-function sqrt() {
-	return Math.sqrt(this.firstOperand);
-}
-
-
-function decimal() {
-
-}
-
-function leftParentheses() {
-
-}
-
-function rightParentheses() {
-
-}
-
-// Functions for pushing numbers to operator object.
+// Functions for pushing numbers to expression array.
 function pushNine() {
-	if (operation.firstOperand === undefined) {
-		firstOperandArray.push('9');
-		displayText.textContent = firstOperandArray.join('');
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
 	}
-	else if (operation.firstOperand !== undefined) {
-		secondOperandArray.push('9');
-		displayText.textContent = secondOperandArray.join('');
-	}
+
+	displayText.textContent = displayText.textContent + '9';
+	expression.push('9');
 }
 
 function pushEight() {
-	if (operation.firstOperand === undefined) {
-		firstOperandArray.push('8');
-		displayText.textContent = firstOperandArray.join('');
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
 	}
-	else if (operation.firstOperand !== undefined) {
-		secondOperandArray.push('8');
-		displayText.textContent = secondOperandArray.join('');
-	}
+
+	displayText.textContent = displayText.textContent + '8';
+	expression.push('8');
 }
 
 function pushSeven() {
-	if (operation.firstOperand === undefined) {
-		firstOperandArray.push('7');
-		displayText.textContent = firstOperandArray.join('');
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
 	}
-	else if (operation.firstOperand !== undefined) {
-		secondOperandArray.push('7');
-		displayText.textContent = secondOperandArray.join('');
-	}
+
+	displayText.textContent = displayText.textContent + '7';
+	expression.push('7');
 }
 
 function pushSix() {
-	if (operation.firstOperand === undefined) {
-		firstOperandArray.push('6');
-		displayText.textContent = firstOperandArray.join('');
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
 	}
-	else if (operation.firstOperand !== undefined) {
-		secondOperandArray.push('6');
-		displayText.textContent = secondOperandArray.join('');
-	}
+
+	displayText.textContent = displayText.textContent + '6';
+	expression.push('6');
 }
 
 function pushFive() {
-	if (operation.firstOperand === undefined) {
-		firstOperandArray.push('5');
-		displayText.textContent = firstOperandArray.join('');
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
 	}
-	else if (operation.firstOperand !== undefined) {
-		secondOperandArray.push('5');
-		displayText.textContent = secondOperandArray.join('');
-	}
+
+	displayText.textContent = displayText.textContent + '5';
+	expression.push('5');
 }
 
 function pushFour() {
-	if (operation.firstOperand === undefined) {
-		firstOperandArray.push('4');
-		displayText.textContent = firstOperandArray.join('');
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
 	}
-	else if (operation.firstOperand !== undefined) {
-		secondOperandArray.push('4');
-		displayText.textContent = secondOperandArray.join('');
-	}
+
+	displayText.textContent = displayText.textContent + '4';
+	expression.push('4');
 }
 
 function pushThree() {
-	if (operation.firstOperand === undefined) {
-		firstOperandArray.push('3');
-		displayText.textContent = firstOperandArray.join('');
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
 	}
-	else if (operation.firstOperand !== undefined) {
-		secondOperandArray.push('3');
-		displayText.textContent = secondOperandArray.join('');
-	}
+
+	displayText.textContent = displayText.textContent + '3';
+	expression.push('3');
 }
 
 function pushTwo() {
-	if (operation.firstOperand === undefined) {
-		firstOperandArray.push('2');
-		displayText.textContent = firstOperandArray.join('');
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
 	}
-	else if (operation.firstOperand !== undefined) {
-		secondOperandArray.push('2');
-		displayText.textContent = secondOperandArray.join('');
-	}
+
+	displayText.textContent = displayText.textContent + '2';
+	expression.push('2');
 }
 
 function pushOne() {
-	if (operation.firstOperand === undefined) {
-		firstOperandArray.push('1');
-		displayText.textContent = firstOperandArray.join('');
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
 	}
-	else if (operation.firstOperand !== undefined) {
-		secondOperandArray.push('1');
-		displayText.textContent = secondOperandArray.join('');
-	}
+
+	displayText.textContent = displayText.textContent + '1';
+	expression.push('1');
 }
 
 function pushZero() {
-	if (operation.firstOperand === undefined) {
-		firstOperandArray.push('0');
-		displayText.textContent = firstOperandArray.join('');
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
 	}
-	else if (operation.firstOperand !== undefined) {
-		secondOperandArray.push('0');
-		displayText.textContent = secondOperandArray.join('');
-	}
+
+	displayText.textContent = displayText.textContent + '0';
+	expression.push('0');
 }
 
 function pushDecimal() {
-	///
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
+	}
+
+	displayText.textContent = displayText.textContent + '.';
+	expression.push('.');
 }
 
-// Functions for pushing operations to operator object.
+// Functions for pushing operations to expression array.
 function pushAdd() {
-	operation.firstOperand = Number(firstOperandArray.join(''));
-	operation.operator = add;
+	expression.push('+');
 }
 
 function pushSubtract() {
-	operation.firstOperand = Number(firstOperandArray.join(''));
-	operation.operator = subtract;
+	expression.push('-');
 }
 
 function pushMultiply() {
-	operation.firstOperand = Number(firstOperandArray.join(''));
-	operation.operator = multiply;
+	expression.push('*');
 }
 
 function pushDivide() {
-	operation.firstOperand = Number(firstOperandArray.join(''));
-	operation.operator = divide;
+	expression.push('/');
 }
 
-function pushPlusMinus() {
-	operation.firstOperand = Number(firstOperandArray.join(''));
-	operation.operator = plusMinus;
-	operaton.result = operation.operator();
-	displayText.textContent = operation.result;
-	operation.firstOperand = operation.result;
+function pushLeftParentheses() {
+	expression.push('(');
+}
+
+function pushRightParentheses() {
+	expression.push(')');
 }
 
 function pushExponent() {
-	operation.firstOperand = Number(firstOperandArray.join(''));
-	operation.operator = exponent;
+	expression.push('**');
 }
 
-function pushSqrt() {
-	operation.firstOperand = Number(firstOperandArray.join(''));
-	operation.operator = sqrt;
+function pushPlusMinus() {
+	expression.push('-');
+	displayText.textContent = '-' + displayText.textContent.splice(1);
 }
 
-// Display functions.
+function pushModulo() {
+	expression.push('%');
+}
+
+// Clear memory.
 function allClear() {
+	expression.splice(0);
 	displayText.textContent = '0';
-
-	var firstOperandArray = [];
-	var secondOperandArray = [];
-
-	var operation = {};
 }
 
+// Backspace.
 function deleteData() {
+	if (displayText.textContent !== '0') {
+		expression = expression.splice(0, expression.length - 1);
+		displayText.textContent = expression.join('');
 
+		if (expression = []) {
+			displayText.textContent = '0';
+		}
+	}
 }
 
+// Display result.
 function displayResult() {
-	operation.secondOperand = Number(secondOperandArray.join(''));
-	operation.result = operation.operator();
-	displayText.textContent = operation.result;
+	var result = Math.floor(eval(expression.join('')) * 100) / 100;
+	displayText.textContent = String(result);
 }
 
 // Button event handlers.
-allClearButton.addEventListener('click', allClear); 
-deleteButton.addEventListener('click', () => {}); 
+allClearButton.addEventListener('click', () => {allClear(); clearMemory()}); 
+deleteButton.addEventListener('click', deleteData); 
 
-leftParenthesesButton.addEventListener('click', () => {}); 
-rightParenthesesButton.addEventListener('click', () => {}); 
-plusMinusButton.addEventListener('click', pushPlusMinus); 
+leftParenthesesButton.addEventListener('click', pushLeftParentheses);
+rightParenthesesButton.addEventListener('click', pushRightParentheses);
 exponentButton.addEventListener('click', pushExponent); 
-sqrtButton.addEventListener('click', pushSqrt); 
+plusMinusButton.addEventListener('click', pushPlusMinus); 
+moduloButton.addEventListener('click', pushModulo);  
 
 nineButton.addEventListener('click', pushNine); 
 eightButton.addEventListener('click', pushEight);
@@ -277,4 +224,4 @@ divideButton.addEventListener('click', pushDivide);
 multiplyButton.addEventListener('click', pushMultiply); 
 subtractButton.addEventListener('click', pushSubtract); 
 addButton.addEventListener('click', pushAdd); 
-equalsButton.addEventListener('click', displayResult); 
+equalsButton.addEventListener('click', () => {displayResult(); clearMemory()}); 
