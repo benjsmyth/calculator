@@ -1,3 +1,9 @@
+/* 
+Work that still needs to be done:
+	- 	Negate sign needs to work
+	-	Keyboard support needs to be implemented
+*/
+
 // Variables for DOM.
 const displayText = document.getElementById('display-text');
 
@@ -166,8 +172,7 @@ function pushExponent() {
 }
 
 function pushPlusMinus() {
-	expression.push('-');
-	displayText.textContent = '-' + displayText.textContent.splice(1);
+
 }
 
 function pushModulo() {
@@ -182,12 +187,21 @@ function allClear() {
 
 // Backspace.
 function deleteData() {
-	if (displayText.textContent !== '0') {
-		expression = expression.splice(0, expression.length - 1);
-		displayText.textContent = expression.join('');
+	if (displayText.textContent === '0' && expression.join('') === '') {
+		return;
+	}
+	else if (displayText.textContent === '0' && expression.join('') === '0') {
+		expression.pop();
+		displayText.textContent === '0';
+	}
+	else if (displayText.textContent !== '0') {
+		expression.pop();
 
-		if (expression = []) {
+		if (expression.join('') === '') {
 			displayText.textContent = '0';
+		}
+		else if (expression.join('') !== '') {
+			displayText.textContent = expression.join('');
 		}
 	}
 }
@@ -199,7 +213,7 @@ function displayResult() {
 }
 
 // Button event handlers.
-allClearButton.addEventListener('click', () => {allClear(); clearMemory()}); 
+allClearButton.addEventListener('click', allClear); 
 deleteButton.addEventListener('click', deleteData); 
 
 leftParenthesesButton.addEventListener('click', pushLeftParentheses);
@@ -224,4 +238,4 @@ divideButton.addEventListener('click', pushDivide);
 multiplyButton.addEventListener('click', pushMultiply); 
 subtractButton.addEventListener('click', pushSubtract); 
 addButton.addEventListener('click', pushAdd); 
-equalsButton.addEventListener('click', () => {displayResult(); clearMemory()}); 
+equalsButton.addEventListener('click', displayResult); 

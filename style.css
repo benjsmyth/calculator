@@ -1,3 +1,10 @@
+/* 
+Work that still needs to be done:
+	- 	Styling needs to be added to CSS to show which buttons are pressed
+	-	Link to Github must be added
+	-	Layout could possibly change but that is lowest priority
+*/
+
 * {
 	margin: 0;
 	padding: 0;
@@ -25,7 +32,7 @@ body {
 
 #display-text {
 	line-height: 200px;
-	font-size: 12em;
+	font-size: 12.5em;
 	float: right;
 	padding: 0 40px;
 }
@@ -69,7 +76,7 @@ button:focus, button:active {
 	grid-area: left;
 	display: grid;
 	grid-template-columns: 50% 50%;
-	grid-template-rows: 25.03% 24.95% 25.03% 25.03%;
+	grid-template-rows: 25% 25% 25% 25%;
 	grid-template-areas: 'left-p right-p' 'exp exp' 'plus-minus plus-minus' 'modulo modulo';
 }
 
