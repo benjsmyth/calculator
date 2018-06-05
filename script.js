@@ -1,9 +1,3 @@
-/* 
-Work that still needs to be done:
-	- 	Negate sign needs to work
-	-	Keyboard support needs to be implemented
-*/
-
 // Variables for DOM.
 const displayText = document.getElementById('display-text');
 
@@ -39,7 +33,7 @@ window.onload = () => {displayText.textContent = '0'};
 // Expression array. This will be used to push data to so it can be held before it is operated on.
 var expression = [];
 
-// This array will be refered to to check if the current expression ends in any of these operators.
+// This array will be referred to to check if the current expression ends in any of these operators.
 var operators = ['+', '-', '*', '/', '**', '%'];
 
 // Functions for pushing numbers to expression array.
@@ -172,7 +166,15 @@ function pushExponent() {
 }
 
 function pushPlusMinus() {
+	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
+		displayText.textContent = '';
+	}
+	else if (expression[expression.length - 1] === ' -') {
+		displayText.textContent = '';
+	}
 
+	displayText.textContent = displayText.textContent + '-';
+	expression.push(' -');
 }
 
 function pushModulo() {
@@ -208,8 +210,83 @@ function deleteData() {
 
 // Display result.
 function displayResult() {
-	var result = Math.floor(eval(expression.join('')) * 100) / 100;
+	var result = (Math.floor(eval(expression.join('')) * 100)) / 100;
 	displayText.textContent = String(result);
+}
+
+// Check which key as been pressed.
+function checkKeyCode(e) {
+	var key = e.which;
+
+	if (e.shiftKey && key === 65) {
+		allClear();
+	}
+	else if (key === 8) {
+		deleteData();
+	}
+	else if (e.shiftKey && key === 57) {
+		pushLeftParentheses();
+	}
+	else if (e.shiftKey && key === 48) {
+		pushRightParentheses();
+	}
+	else if (e.shiftKey && key === 54) {
+		pushExponent();
+	}
+	else if (e.shiftKey && key === 189) {
+		pushPlusMinus();
+	}
+	else if (e.shiftKey && key === 53) {
+		pushModulo();
+	}
+	else if (!e.shiftKey && key === 57) {
+		pushNine();
+	}
+	else if (!e.shiftKey && key === 56) {
+		pushEight();
+	}
+	else if (key === 55) {
+		pushSeven();
+	}
+	else if (!e.shiftKey && key === 54) {
+		pushSix();
+	}
+	else if (!e.shiftKey && key === 53) {
+		pushFive();
+	}
+	else if (key === 52) {
+		pushFour();
+	}
+	else if (key === 51) {
+		pushThree();
+	}
+	else if (key === 50) {
+		pushTwo();
+	}
+	else if (key === 49) {
+		pushOne();
+	}
+	else if (!e.shiftKey && key === 48) {
+		pushZero();
+	}
+	else if (key === 190) {
+		pushDecimal();
+	}
+	else if (key === 191) {
+		pushDivide();
+	}
+	else if (e.shiftKey && key === 56) {
+		pushMultiply();
+	}
+	else if (!e.shiftKey && key === 189) {
+		pushSubtract();
+	}
+	else if (e.shiftKey && key === 187) {
+		pushAdd();
+	}
+	else if (!e.shiftKey && key === 13 || key === 187) {
+		displayResult();
+	}
 }
 
 // Button event handlers.
@@ -238,4 +315,7 @@ divideButton.addEventListener('click', pushDivide);
 multiplyButton.addEventListener('click', pushMultiply); 
 subtractButton.addEventListener('click', pushSubtract); 
 addButton.addEventListener('click', pushAdd); 
-equalsButton.addEventListener('click', displayResult); 
+equalsButton.addEventListener('click', displayResult);
+
+// Event handler for checking what keys have been pressed.
+window.addEventListener('keydown', checkKeyCode);
