@@ -7,8 +7,7 @@ const deleteButton = document.getElementById('delete');
 const leftParenthesesButton = document.getElementById('left-parentheses');
 const rightParenthesesButton = document.getElementById('right-parentheses');
 const exponentButton = document.getElementById('exponent');
-const plusMinusButton = document.getElementById('plus-minus'); 
-const moduloButton = document.getElementById('modulo');   
+const plusMinusButton = document.getElementById('plus-minus');  
 
 const nineButton = document.getElementById('nine'); 
 const eightButton = document.getElementById('eight');
@@ -177,44 +176,7 @@ function pushPlusMinus() {
 	expression.push(' -');
 }
 
-function pushModulo() {
-	expression.push('%');
-}
-
-// Clear memory.
-function allClear() {
-	expression.splice(0);
-	displayText.textContent = '0';
-}
-
-// Backspace.
-function deleteData() {
-	if (displayText.textContent === '0' && expression.join('') === '') {
-		return;
-	}
-	else if (displayText.textContent === '0' && expression.join('') === '0') {
-		expression.pop();
-		displayText.textContent === '0';
-	}
-	else if (displayText.textContent !== '0') {
-		expression.pop();
-
-		if (expression.join('') === '') {
-			displayText.textContent = '0';
-		}
-		else if (expression.join('') !== '') {
-			displayText.textContent = expression.join('');
-		}
-	}
-}
-
-// Display result.
-function displayResult() {
-	var result = (Math.floor(eval(expression.join('')) * 100)) / 100;
-	displayText.textContent = String(result);
-}
-
-// Check which key as been pressed.
+// Check which key has been pressed.
 function checkKeyCode(e) {
 	var key = e.which;
 
@@ -284,9 +246,44 @@ function checkKeyCode(e) {
 	else if (e.shiftKey && key === 187) {
 		pushAdd();
 	}
-	else if (!e.shiftKey && key === 13 || key === 187) {
+	else if (key === 13) {
 		displayResult();
 	}
+}
+
+// Display result.
+function displayResult() {
+	var result = Math.floor(eval(expression.join('')) * 100) / 100;
+	displayText.textContent = result;
+
+	expression.splice(0);
+}
+
+// Backspace.
+function deleteData() {
+	if (displayText.textContent === '0' && expression.join('') === '') {
+		return;
+	}
+	else if (displayText.textContent === '0' && expression.join('') === '0') {
+		expression.pop();
+		displayText.textContent === '0';
+	}
+	else if (displayText.textContent !== '0') {
+		expression.pop();
+
+		if (expression.join('') === '') {
+			displayText.textContent = '0';
+		}
+		else if (expression.join('') !== '') {
+			displayText.textContent = expression.join('');
+		}
+	}
+}
+
+// Clear memory.
+function allClear() {
+	expression.splice(0);
+	displayText.textContent = '0';
 }
 
 // Button event handlers.
@@ -297,7 +294,6 @@ leftParenthesesButton.addEventListener('click', pushLeftParentheses);
 rightParenthesesButton.addEventListener('click', pushRightParentheses);
 exponentButton.addEventListener('click', pushExponent); 
 plusMinusButton.addEventListener('click', pushPlusMinus); 
-moduloButton.addEventListener('click', pushModulo);  
 
 nineButton.addEventListener('click', pushNine); 
 eightButton.addEventListener('click', pushEight);
