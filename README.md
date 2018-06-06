@@ -1,5 +1,5 @@
 # calculator
-This is a simple online calculator that I built for [The Odin Project's](https://www.theodinproject.com/dashboard) final Javascript project in their "Web Development 101" course.
+This is a simple online calculator that I built for [The Odin Project's](https://www.theodinproject.com/dashboard) final JavaScript project in their "Web Development 101" course.
 
 Current functionality includes support for all basic operations, as well as parenthetic operations, exponents, and negates. There are also some useful key commands that I implemented in order to provide a more fluid user experience:
 
