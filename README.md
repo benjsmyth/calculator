@@ -30,6 +30,6 @@ Equals 			  | Enter
 
 If a user inputs a number that is too large for the display box, it will automatically add three dots ("...") to signify that a long value is being inputted. Similarly, if the result after equating is too big for the display box, a scrollbar will be added to expose the overflow text.
 
-**Note**: There is currently a particularly persistent bug in the program that is causing a very specific issue with the key commands. If a user clears the calculator by **clicking** the button, every following calculation done only with they key commands will display "0" as the result. This can be resolved with a simple refresh of the page, but it's still a bit frustrating. If anyone feels like prying apart my code to figure out why this is the case, go ahead! 
+**Note**: There is currently a persistent bug in the program that is causing a very specific issue with the key commands. If a user clears the calculator by **clicking** the button, every following calculation done only with the key commands will display "0" as the result. This can be resolved with a simple refresh of the page, but it's still a bit frustrating. If anyone feels like prying apart my code to figure out why this is the case, go ahead! 
 
 Otherwise, enjoy my super simple calculator! :)
