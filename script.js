@@ -7,7 +7,7 @@ const deleteButton = document.getElementById('delete');
 const leftParenthesesButton = document.getElementById('left-parentheses');
 const rightParenthesesButton = document.getElementById('right-parentheses');
 const exponentButton = document.getElementById('exponent');
-const plusMinusButton = document.getElementById('plus-minus');  
+const negateButton = document.getElementById('negate');  
 
 const nineButton = document.getElementById('nine'); 
 const eightButton = document.getElementById('eight');
@@ -43,6 +43,11 @@ function pushNine() {
 
 	displayText.textContent = displayText.textContent + '9';
 	expression.push('9');
+
+	if (displayText.textContent.length > 10) {
+		displayText.textContent = '';
+		displayText.textContent = '...';
+	}
 }
 
 function pushEight() {
@@ -52,6 +57,11 @@ function pushEight() {
 
 	displayText.textContent = displayText.textContent + '8';
 	expression.push('8');
+
+	if (displayText.textContent.length > 10) {
+		displayText.textContent = '';
+		displayText.textContent = '...';
+	}
 }
 
 function pushSeven() {
@@ -61,6 +71,11 @@ function pushSeven() {
 
 	displayText.textContent = displayText.textContent + '7';
 	expression.push('7');
+
+	if (displayText.textContent.length > 10) {
+		displayText.textContent = '';
+		displayText.textContent = '...';
+	}
 }
 
 function pushSix() {
@@ -70,6 +85,11 @@ function pushSix() {
 
 	displayText.textContent = displayText.textContent + '6';
 	expression.push('6');
+
+	if (displayText.textContent.length > 10) {
+		displayText.textContent = '';
+		displayText.textContent = '...';
+	}
 }
 
 function pushFive() {
@@ -79,6 +99,11 @@ function pushFive() {
 
 	displayText.textContent = displayText.textContent + '5';
 	expression.push('5');
+
+	if (displayText.textContent.length > 10) {
+		displayText.textContent = '';
+		displayText.textContent = '...';
+	}
 }
 
 function pushFour() {
@@ -88,6 +113,11 @@ function pushFour() {
 
 	displayText.textContent = displayText.textContent + '4';
 	expression.push('4');
+
+	if (displayText.textContent.length > 10) {
+		displayText.textContent = '';
+		displayText.textContent = '...';
+	}
 }
 
 function pushThree() {
@@ -97,6 +127,11 @@ function pushThree() {
 
 	displayText.textContent = displayText.textContent + '3';
 	expression.push('3');
+
+	if (displayText.textContent.length > 10) {
+		displayText.textContent = '';
+		displayText.textContent = '...';
+	}
 }
 
 function pushTwo() {
@@ -106,6 +141,11 @@ function pushTwo() {
 
 	displayText.textContent = displayText.textContent + '2';
 	expression.push('2');
+
+	if (displayText.textContent.length > 10) {
+		displayText.textContent = '';
+		displayText.textContent = '...';
+	}
 }
 
 function pushOne() {
@@ -115,6 +155,11 @@ function pushOne() {
 
 	displayText.textContent = displayText.textContent + '1';
 	expression.push('1');
+
+	if (displayText.textContent.length > 10) {
+		displayText.textContent = '';
+		displayText.textContent = '...';
+	}
 }
 
 function pushZero() {
@@ -124,6 +169,11 @@ function pushZero() {
 
 	displayText.textContent = displayText.textContent + '0';
 	expression.push('0');
+
+	if (displayText.textContent.length > 10) {
+		displayText.textContent = '';
+		displayText.textContent = '...';
+	}
 }
 
 function pushDecimal() {
@@ -133,6 +183,11 @@ function pushDecimal() {
 
 	displayText.textContent = displayText.textContent + '.';
 	expression.push('.');
+
+	if (displayText.textContent.length > 10) {
+		displayText.textContent = '';
+		displayText.textContent = '...';
+	}
 }
 
 // Functions for pushing operations to expression array.
@@ -164,10 +219,11 @@ function pushExponent() {
 	expression.push('**');
 }
 
-function pushPlusMinus() {
+function pushNegate() {
 	if (displayText.textContent === '0' || operators.includes(expression[expression.length - 1])) {
 		displayText.textContent = '';
 	}
+
 	else if (expression[expression.length - 1] === ' -') {
 		displayText.textContent = '';
 	}
@@ -176,85 +232,22 @@ function pushPlusMinus() {
 	expression.push(' -');
 }
 
-// Check which key has been pressed.
-function checkKeyCode(e) {
-	var key = e.which;
-
-	if (e.shiftKey && key === 65) {
-		allClear();
-	}
-	else if (key === 8) {
-		deleteData();
-	}
-	else if (e.shiftKey && key === 57) {
-		pushLeftParentheses();
-	}
-	else if (e.shiftKey && key === 48) {
-		pushRightParentheses();
-	}
-	else if (e.shiftKey && key === 54) {
-		pushExponent();
-	}
-	else if (e.shiftKey && key === 189) {
-		pushPlusMinus();
-	}
-	else if (e.shiftKey && key === 53) {
-		pushModulo();
-	}
-	else if (!e.shiftKey && key === 57) {
-		pushNine();
-	}
-	else if (!e.shiftKey && key === 56) {
-		pushEight();
-	}
-	else if (key === 55) {
-		pushSeven();
-	}
-	else if (!e.shiftKey && key === 54) {
-		pushSix();
-	}
-	else if (!e.shiftKey && key === 53) {
-		pushFive();
-	}
-	else if (key === 52) {
-		pushFour();
-	}
-	else if (key === 51) {
-		pushThree();
-	}
-	else if (key === 50) {
-		pushTwo();
-	}
-	else if (key === 49) {
-		pushOne();
-	}
-	else if (!e.shiftKey && key === 48) {
-		pushZero();
-	}
-	else if (key === 190) {
-		pushDecimal();
-	}
-	else if (key === 191) {
-		pushDivide();
-	}
-	else if (e.shiftKey && key === 56) {
-		pushMultiply();
-	}
-	else if (!e.shiftKey && key === 189) {
-		pushSubtract();
-	}
-	else if (e.shiftKey && key === 187) {
-		pushAdd();
-	}
-	else if (key === 13) {
-		displayResult();
-	}
-}
-
 // Display result.
 function displayResult() {
-	var result = Math.floor(eval(expression.join('')) * 100) / 100;
-	displayText.textContent = result;
+	var result = eval(expression.join(''));
+	var roundedResult = Math.floor(result * 100) / 100;
+
+	if (result > 0 && result < 2 ** 53 || result < 0 && result > 2 ** -53) {
+		displayText.textContent = String(roundedResult);
+	}
+
+	else if (result === 0) {
+		displayText.textContent = '0';
+	}
+
+	else {
+		displayText.textContent = 'Error';
+	}
 
 	expression.splice(0);
 }
@@ -264,16 +257,19 @@ function deleteData() {
 	if (displayText.textContent === '0' && expression.join('') === '') {
 		return;
 	}
+
 	else if (displayText.textContent === '0' && expression.join('') === '0') {
 		expression.pop();
 		displayText.textContent === '0';
 	}
+
 	else if (displayText.textContent !== '0') {
 		expression.pop();
 
 		if (expression.join('') === '') {
 			displayText.textContent = '0';
 		}
+
 		else if (expression.join('') !== '') {
 			displayText.textContent = expression.join('');
 		}
@@ -286,32 +282,258 @@ function allClear() {
 	displayText.textContent = '0';
 }
 
+// Functions for changing button styles.
+function allClearButtonClick() {
+	allClearButton.classList.add('top-buttons-clicked');
+	setTimeout(() => {allClearButton.classList.remove('top-buttons-clicked')}, 250);
+}
+
+function deleteButtonClick() {
+	deleteButton.classList.add('top-buttons-clicked');
+	setTimeout(() => {deleteButton.classList.remove('top-buttons-clicked')}, 250);
+}
+
+function nineButtonClick() {
+	nineButton.classList.add('left-buttons-clicked');
+	setTimeout(() => {nineButton.classList.remove('left-buttons-clicked')}, 250);
+}
+
+function eightButtonClick() {
+	eightButton.classList.add('left-buttons-clicked');
+	setTimeout(() => {eightButton.classList.remove('left-buttons-clicked')}, 250);
+}
+
+function sevenButtonClick() {
+	sevenButton.classList.add('left-buttons-clicked');
+	setTimeout(() => {sevenButton.classList.remove('left-buttons-clicked')}, 250);
+}
+
+function sixButtonClick() {
+	sixButton.classList.add('left-buttons-clicked');
+	setTimeout(() => {sixButton.classList.remove('left-buttons-clicked')}, 250);
+}
+
+function fiveButtonClick() {
+	fiveButton.classList.add('left-buttons-clicked');
+	setTimeout(() => {fiveButton.classList.remove('left-buttons-clicked')}, 250);
+}
+
+function fourButtonClick() {
+	fourButton.classList.add('left-buttons-clicked');
+	setTimeout(() => {fourButton.classList.remove('left-buttons-clicked')}, 250);
+}
+
+function threeButtonClick() {
+	threeButton.classList.add('left-buttons-clicked');
+	setTimeout(() => {threeButton.classList.remove('left-buttons-clicked')}, 250);
+}
+
+function twoButtonClick() {
+	twoButton.classList.add('left-buttons-clicked');
+	setTimeout(() => {twoButton.classList.remove('left-buttons-clicked')}, 250);
+}
+
+function oneButtonClick() {
+	oneButton.classList.add('left-buttons-clicked');
+	setTimeout(() => {oneButton.classList.remove('left-buttons-clicked')}, 250);
+}
+
+function zeroButtonClick() {
+	zeroButton.classList.add('left-buttons-clicked');
+	setTimeout(() => {zeroButton.classList.remove('left-buttons-clicked')}, 250);
+}
+
+function decimalButtonClick() {
+	decimalButton.classList.add('left-buttons-clicked');
+	setTimeout(() => {decimalButton.classList.remove('left-buttons-clicked')}, 250);
+}
+
+function leftParenthesesButtonClick() {
+	leftParenthesesButton.classList.add('right-buttons-clicked');
+	setTimeout(() => {leftParenthesesButton.classList.remove('right-buttons-clicked')}, 250);
+}
+
+function rightParenthesesButtonClick() {
+	rightParenthesesButton.classList.add('right-buttons-clicked');
+	setTimeout(() => {rightParenthesesButton.classList.remove('right-buttons-clicked')}, 250);
+}
+
+function exponentButtonClick() {
+	exponentButton.classList.add('right-buttons-clicked');
+	setTimeout(() => {exponentButton.classList.remove('right-buttons-clicked')}, 250);
+}
+
+function negateButtonClick() {
+	negateButton.classList.add('right-buttons-clicked');
+	setTimeout(() => {negateButton.classList.remove('right-buttons-clicked')}, 250);
+}
+
+function divideButtonClick() {
+	divideButton.classList.add('right-buttons-clicked');
+	setTimeout(() => {divideButton.classList.remove('right-buttons-clicked')}, 250);
+}
+
+function multiplyButtonClick() {
+	multiplyButton.classList.add('right-buttons-clicked');
+	setTimeout(() => {multiplyButton.classList.remove('right-buttons-clicked')}, 250);
+}
+
+function subtractButtonClick() {
+	subtractButton.classList.add('right-buttons-clicked');
+	setTimeout(() => {subtractButton.classList.remove('right-buttons-clicked')}, 250);
+}
+
+function addButtonClick() {
+	addButton.classList.add('right-buttons-clicked');
+	setTimeout(() => {addButton.classList.remove('right-buttons-clicked')}, 250);
+}
+
+function equalsButtonClick() {
+	equalsButton.classList.add('right-buttons-clicked');
+	setTimeout(() => {equalsButton.classList.remove('right-buttons-clicked')}, 250);
+}
+
+// Check which key has been pressed.
+function checkKeyCode(e) {
+	var key = e.which;
+
+	if (e.shiftKey && key === 65) {
+		allClear();
+		allClearButtonClick();
+	}
+
+	else if (key === 8) {
+		deleteData();
+		deleteButtonClick();
+	}
+
+	else if (!e.shiftKey && key === 57) {
+		pushNine();
+		nineButtonClick();
+	}
+
+	else if (!e.shiftKey && key === 56) {
+		pushEight();
+		eightButtonClick();
+	}
+
+	else if (key === 55) {
+		pushSeven();
+		sevenButtonClick();
+	}
+
+	else if (!e.shiftKey && key === 54) {
+		pushSix();
+		sixButtonClick();
+	}
+
+	else if (!e.shiftKey && key === 53) {
+		pushFive();
+		fiveButtonClick();
+	}
+
+	else if (key === 52) {
+		pushFour();
+		fourButtonClick();
+	}
+
+	else if (key === 51) {
+		pushThree();
+		threeButtonClick();
+	}
+
+	else if (key === 50) {
+		pushTwo();
+		twoButtonClick();
+	}
+
+	else if (key === 49) {
+		pushOne();
+		oneButtonClick();
+	}
+
+	else if (!e.shiftKey && key === 48) {
+		pushZero();
+		zeroButtonClick();
+	}
+
+	else if (key === 190) {
+		pushDecimal();
+		decimalButtonClick();
+	}
+
+	else if (e.shiftKey && key === 57) {
+		pushLeftParentheses();
+		leftParenthesesButtonClick();
+	}
+
+	else if (e.shiftKey && key === 48) {
+		pushRightParentheses();
+		rightParenthesesButtonClick();
+	}
+
+	else if (e.shiftKey && key === 54) {
+		pushExponent();
+		exponentButtonClick();
+	}
+
+	else if (e.shiftKey && key === 189) {
+		pushNegate();
+		negateButtonClick();
+	}
+
+	else if (key === 191) {
+		pushDivide();
+		divideButtonClick();
+	}
+
+	else if (e.shiftKey && key === 56) {
+		pushMultiply();
+		multiplyButtonClick();
+	}
+
+	else if (!e.shiftKey && key === 189) {
+		pushSubtract();
+		subtractButtonClick();
+	}
+
+	else if (e.shiftKey && key === 187) {
+		pushAdd();
+		addButtonClick();
+	}
+
+	else if (key === 13) {
+		displayResult();
+		equalsButtonClick();
+	}
+}
+
 // Button event handlers.
-allClearButton.addEventListener('click', allClear); 
-deleteButton.addEventListener('click', deleteData); 
+allClearButton.addEventListener('click', () => {allClear(); allClearButtonClick();}); 
+deleteButton.addEventListener('click', () => {deleteData(); deleteButtonClick();}); 
 
-leftParenthesesButton.addEventListener('click', pushLeftParentheses);
-rightParenthesesButton.addEventListener('click', pushRightParentheses);
-exponentButton.addEventListener('click', pushExponent); 
-plusMinusButton.addEventListener('click', pushPlusMinus); 
+nineButton.addEventListener('click', () => {pushNine(); nineButtonClick();}); 
+eightButton.addEventListener('click', () => {pushEight(); eightButtonClick();});
+sevenButton.addEventListener('click', () => {pushSeven(); sevenButtonClick();}); 
+sixButton.addEventListener('click', () => {pushSix(); sixButtonClick();}); 
+fiveButton.addEventListener('click', () => {pushFive(); fiveButtonClick();}); 
+fourButton.addEventListener('click', () => {pushFour(); fourButtonClick();}); 
+threeButton.addEventListener('click', () => {pushThree(); threeButtonClick();}); 
+twoButton.addEventListener('click', () => {pushTwo(); twoButtonClick();}); 
+oneButton.addEventListener('click', () => {pushOne(); oneButtonClick();}); 
+zeroButton.addEventListener('click', () => {pushZero(); zeroButtonClick();}); 
+decimalButton.addEventListener('click', () => {pushDecimal(); decimalButtonClick();}); 
 
-nineButton.addEventListener('click', pushNine); 
-eightButton.addEventListener('click', pushEight);
-sevenButton.addEventListener('click', pushSeven); 
-sixButton.addEventListener('click', pushSix); 
-fiveButton.addEventListener('click', pushFive); 
-fourButton.addEventListener('click', pushFour); 
-threeButton.addEventListener('click', pushThree); 
-twoButton.addEventListener('click', pushTwo); 
-oneButton.addEventListener('click', pushOne); 
-zeroButton.addEventListener('click', pushZero); 
-decimalButton.addEventListener('click', pushDecimal); 
+leftParenthesesButton.addEventListener('click', () => {pushLeftParentheses(); leftParenthesesButtonClick();});
+rightParenthesesButton.addEventListener('click', () => {pushRightParentheses(); rightParenthesesButtonClick();});
+exponentButton.addEventListener('click', () => {pushExponent(); exponentButtonClick();}); 
+negateButton.addEventListener('click', () => {pushNegate(); negateButtonClick();}); 
 
-divideButton.addEventListener('click', pushDivide);
-multiplyButton.addEventListener('click', pushMultiply); 
-subtractButton.addEventListener('click', pushSubtract); 
-addButton.addEventListener('click', pushAdd); 
-equalsButton.addEventListener('click', displayResult);
+divideButton.addEventListener('click', () => {pushDivide(); divideButtonClick();});
+multiplyButton.addEventListener('click', () => {pushMultiply(); multiplyButtonClick();}); 
+subtractButton.addEventListener('click', () => {pushSubtract(); subtractButtonClick();}); 
+addButton.addEventListener('click', () => {pushAdd(); addButtonClick();}); 
+equalsButton.addEventListener('click', () => {displayResult(); equalsButtonClick();});
 
 // Event handler for checking what keys have been pressed.
 window.addEventListener('keydown', checkKeyCode);

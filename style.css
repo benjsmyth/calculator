@@ -18,27 +18,31 @@ body {
 #container {
 	width: 100vw;
 	height: 100vh;
-	background: #199ca8;
 	position: relative;
 }
 
 #display-bar {
-	width: 100%;
-	height: 200px;
+	height: 220px;
 	background: white;
 	color: black;
+	padding: 0 30px;
 	border-bottom: 1px solid black;
 }
 
+#display-text-container {
+	position: relative;
+	overflow-x: scroll;
+	overflow-y: hidden;
+}
+
 #display-text {
-	line-height: 200px;
-	font-size: 12.5em;
-	float: right;
-	padding: 0 40px;
+	line-height: 220px;
+	font-size: 13.2em;
+	text-align: right;
 }
 
 #all-buttons {
-	height: 480px;
+	height: 458px;
 	z-index: 0;
 	display: grid;
 	grid-gap: none;
@@ -60,15 +64,14 @@ button {
 
 button:hover {
 	cursor: pointer;
-	background: #12848e;
 }
 
 button:focus, button:active {
 	outline: none;
 }
 
-button#focused {
-
+body > div#container > div#all-buttons > div#top-buttons > button.top-buttons-clicked {
+	background: #232323;
 }
 
 #top-buttons {
@@ -134,7 +137,11 @@ button#focused {
 }
 
 #left-buttons > button {
-	background: #1ca2af;
+	background: #008A8A;
+}
+
+body > div#container > div#all-buttons > div#left-buttons > button.left-buttons-clicked {
+	background: #007072;
 }
 
 #right-buttons {
@@ -143,22 +150,6 @@ button#focused {
 	grid-template-columns: 25% 25% 25% 25%;
 	grid-template-rows: 25% 25% 50%;
 	grid-template-areas: 'left-p right-p exp negate' 'divide multiply subtract add' 'equals equals equals equals' 'equals equals equals equals';	
-}
-
-#divide {
-	grid-area: divide;
-}
-
-#multiply {
-	grid-area: multiply;
-}
-
-#subtract {
-	grid-area: subtract;
-}
-
-#add {
-	grid-area: add;
 }
 
 #left-parentheses {
@@ -177,12 +168,32 @@ button#focused {
 	grid-area: negate;
 }
 
+#divide {
+	grid-area: divide;
+}
+
+#multiply {
+	grid-area: multiply;
+}
+
+#subtract {
+	grid-area: subtract;
+}
+
+#add {
+	grid-area: add;
+}
+
 #equals {
 	grid-area: equals;
 }
 
 #right-buttons > button {
-	background: #ce8600;
+	background: rgba(230, 104, 0, 0.9);
+}
+
+body > div#container > div#all-buttons > div#right-buttons > button.right-buttons-clicked {
+	background: rgba(196, 88, 0, 0.9);
 }
 
 #footer {
@@ -211,4 +222,9 @@ button#focused {
 	right: 15px;
 	top: 14px;
 	text-shadow: 0 0 5px rgb(0, 0, 0, 0.7);
+}
+
+#visitme > a {
+	text-decoration: none;
+	color: white;
 }
