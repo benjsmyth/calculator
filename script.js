@@ -33,7 +33,7 @@ window.onload = () => {displayText.textContent = '0'};
 var expression = [];
 
 // This array will be referred to to check if the current expression ends in any of these operators.
-var operators = ['+', '-', '*', '/', '**', '%'];
+var operators = ['+', '-', '*', '/', '**', '(', ')'];
 
 // Functions for pushing numbers to expression array.
 function pushNine() {
