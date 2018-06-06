@@ -237,7 +237,7 @@ function displayResult() {
 	var result = eval(expression.join(''));
 	var roundedResult = Math.floor(result * 100) / 100;
 
-	if (result > 0 && result < 2 ** 53 || result < 0 && result > 2 ** -53) {
+	if (result > 0 && result < 2 ** 53 || result < 0 && result > (-2) ** 53) {
 		displayText.textContent = String(roundedResult);
 	}
 
